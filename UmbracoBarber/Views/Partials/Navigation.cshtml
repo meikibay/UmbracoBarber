@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<nav>
+    @foreach (var page in Model.Content.Site().DescendantsOrSelf())
+    {
+        if (page.Id == Model.Content.Id)
+        {
+            <span>@page.GetPropertyValue("menuTitle") - (Current)</span>
+        }
+        else
+        {
+            <a href="@page.Url">@page.GetPropertyValue("menuTitle")</a>
+        }
+
+    }
+</nav>
